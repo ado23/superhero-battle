@@ -1,0 +1,13 @@
+{
+  "extends": ["react-app", "plugin:prettier/recommended"]
+
+  // If you want to use airbnb style guide, for now I will use just prettier
+  //   "extends": ["airbnb", "prettier", "react-app"],
+  //   "plugins": ["prettier"],
+  //   "rules": {
+  //     "no-unused-vars": "warn",
+  //     "no-console": "warn",
+  //     "func-names": "off",
+  //     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
+  //   }
+}
