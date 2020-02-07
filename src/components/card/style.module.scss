@@ -1,0 +1,249 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans|Open+Sans+Condensed:300,700");
+
+$card-font: "Open Sans Condensed", "Open Sans", helvetica, sans-serif;
+
+@mixin transition($property) {
+  -webkit-transition: $property;
+  transition: $property;
+}
+
+@mixin translate($property) {
+  -webkit-transform: translateY($property);
+  transform: translateY($property);
+}
+
+body {
+  font-family: "Open Sans", Helvetica, sans-serif;
+  text-align: center;
+  margin: 20px;
+}
+
+img {
+  height: 330px;
+  width: 300px;
+  margin-bottom: -6px;
+  display: inline-block;
+  border-radius: 10px 10px 0 0;
+}
+
+// prettier-ignore
+h1, h2, h3, h4, h5 {
+  margin: 0;
+  font-weight: 400;
+}
+
+%card {
+  @include transition(0.4s);
+  display: inline-block;
+  width: 300px;
+  padding: 1em;
+  border-radius: 15px;
+  margin: 10px;
+  background: #ddd;
+  box-shadow: 0px 5px 20px -10px #111111;
+  position: relative;
+  &:hover {
+    @include translate(10px);
+    z-index: 5;
+    box-shadow: 0px 13px 30px -15px #000000;
+  }
+}
+
+.card_caption {
+  background-color: rgba(255, 255, 255, 0.65);
+  padding: 1em;
+  position: relative;
+  border-radius: 0 0 3px 3px;
+}
+
+.card_type {
+  @include translate(-50%);
+  position: absolute;
+  top: 0;
+  right: 1em;
+  color: #ffffff;
+  text-transform: uppercase;
+  font-family: $card-font;
+  letter-spacing: 0.1em;
+  padding: 0.25em;
+  line-height: 1;
+  border-radius: 2px;
+  background: #bbbbbb;
+}
+
+.card_label {
+  font-size: 10px;
+  text-transform: uppercase;
+  font-weight: 400;
+  display: block;
+  margin-bottom: 3px;
+}
+
+.card_name {
+  font-family: $card-font;
+  text-align: center;
+  font-size: 1.5em;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.card_stats {
+  margin: 1em 0;
+  width: 100%;
+
+  th {
+    font-family: $card-font;
+    text-align: right;
+    font-weight: 300;
+  }
+  // prettier-ignore
+  th, td {
+    width: 50%;
+    padding: 0.25em 0.5em 0;
+  }
+}
+
+.card_abilities {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card_ability {
+  margin-top: 1em;
+  flex: 1 0;
+}
+
+.dc_comics {
+  @extend %card;
+  background: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    color-stop(10%, #000080),
+    to(#1f1fb9)
+  );
+  background: linear-gradient(120deg, #6db9f8 0%, #000080 100%);
+  .card_type {
+    background-color: #0476f2;
+  }
+}
+
+.marvel_comics {
+  @extend %card;
+  background: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    color-stop(10%, #c71800),
+    to(#c9502c)
+  );
+  background: linear-gradient(0deg, #c71800 10%, #e67c5c 100%);
+
+  .card_type {
+    background-color: #c71800;
+  }
+}
+
+/* ALL CARD STYLES, BUT THEY ARE NOT USED IN COMPONENT*/
+.card_normal {
+  @extend %card;
+  background: linear-gradient(110deg, #fdbb2d 0%, #3a1c71 100%);
+  box-shadow: 0px 5px 20px -10px #3a1c71;
+
+  .card_type {
+    background-color: #c08a53;
+  }
+}
+
+.card_water {
+  @extend %card;
+  background: linear-gradient(120deg, #1cb5e0 0%, #000851 100%);
+  box-shadow: 0px 5px 20px -10px #000851;
+
+  .card_type {
+    background-color: #1cb5e0;
+  }
+}
+
+.card_psychic {
+  @extend %card;
+  background: linear-gradient(140deg, #ffa7f9 0%, #ff2cc3 39%, #ffe3a7 100%);
+
+  .card_type {
+    background: #ff2cc3;
+  }
+}
+
+.card_dark {
+  @extend %card;
+  background: linear-gradient(20deg, #191919 0%, #100b32 33%, #5c0249 100%);
+
+  .card_type {
+    background: #5c0249;
+  }
+}
+
+.card_grass {
+  @extend %card;
+  background: linear-gradient(140deg, #c4da3d 0%, #6e7f0e 69%, #275009 100%);
+
+  .card_type {
+    background: #6e7f0e;
+  }
+}
+
+.card_ice {
+  @extend %card;
+  background: linear-gradient(230deg, #caeaf6 0%, #a0eaf1 46%, #6fb8eb 100%);
+
+  .card_type {
+    background: #6fb8eb;
+  }
+}
+
+.card_electric {
+  @extend %card;
+  background: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    color-stop(34%, #ffde00),
+    color-stop(83%, #e8ff99)
+  );
+  background: linear-gradient(90deg, #ffde00 34%, #e8ff99 83%);
+
+  .card_type {
+    background-color: #000;
+  }
+}
+
+.card_fire {
+  @extend %card;
+  background: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    color-stop(10%, #c71800),
+    to(#fcc245)
+  );
+  background: linear-gradient(0deg, #c71800 10%, #fcc245 100%);
+
+  .card_type {
+    background-color: #c71800;
+  }
+}
+
+.card_fairy {
+  @extend %card;
+  background: linear-gradient(
+    45deg,
+    #ffe6f0 0%,
+    #ffc5e0 34%,
+    #ffa6b9 71%,
+    #ff8a95 100%
+  );
+
+  .card_type {
+    background: #ff8a95;
+  }
+}

@@ -1,0 +1,28 @@
+.card {
+  width: 150px;
+  padding: 1em;
+  border-radius: 15px;
+  margin: 5px;
+  background-color: gold;
+}
+
+.container_main {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  height: 300px;
+  margin: 0;
+  margin-top: 20px;
+}
+
+.container {
+  width: 60%;
+  margin: auto;
+}
+
+.imgSrc {
+  width: 70%;
+  height: 60%;
+}

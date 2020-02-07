@@ -1,27 +1,31 @@
 import React, { Component } from "react";
-import "./style.css";
+import styles from "./style.module.scss";
 
 class Card extends Component {
   render() {
-    let props = this.props;
-    let { name, powerstats } = props.characterData;
-    let srcImg = props.characterData.images.lg;
-    let { publisher } = props.characterData.biography;
-    let { alignment } = props.characterData.biography;
-    let height = props.characterData.appearance.height[1];
-    let weight = props.characterData.appearance.weight[1];
+    let data = this.props.characterData;
+
+    let { name, powerstats } = data;
+    let height = data.appearance.height[1];
+    let weight = data.appearance.weight[1];
+    let srcImg = data.images.lg;
+    let { publisher } = data.biography;
 
     return (
-      <figure className="card card--water">
+      <figure
+        className={
+          publisher === "DC Comics" ? styles.dc_comics : styles.marvel_comics
+        }
+      >
         <div>
           <img src={srcImg} alt={name} />
         </div>
 
-        <figcaption className="card__caption">
-          <h1 className="card__name">{name}</h1>
-          <h3 className="card__type">{publisher}</h3>
+        <figcaption className={styles.card_caption}>
+          <h1 className={styles.card_name}>{name}</h1>
+          <h3 className={styles.card_type}>{publisher}</h3>
 
-          <table className="card__stats">
+          <table className={styles.card_stats}>
             <tbody>
               {Object.keys(powerstats).map(key => {
                 return (
@@ -34,14 +38,14 @@ class Card extends Component {
             </tbody>
           </table>
 
-          <div className="card__abilities">
-            <h4 className="card__ability">
-              <span className="card__label">Height</span>
+          <div className={styles.card_abilities}>
+            <h4 className={styles.card_ability}>
+              <span className={styles.card_label}>Height</span>
               {height}
             </h4>
 
-            <h4 className="card__ability">
-              <span className="card__label">Weight</span>
+            <h4 className={styles.card_ability}>
+              <span className={styles.card_label}>Weight</span>
               {weight}
             </h4>
           </div>
