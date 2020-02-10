@@ -1,5 +1,4 @@
 body {
-  margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
@@ -12,21 +11,21 @@ code {
     monospace;
 }
 
-.topnav {
+.list {
+  margin: auto;
+  background-color: darkcyan;
   display: flex;
+  flex-direction: row;
+  list-style: none;
   justify-content: center;
-  ul {
-    display: flex;
-    flex-direction: row;
-    list-style: none;
-  }
+  padding: 14px;
   a {
     color: #f2f2f2;
     padding: 14px 16px;
     text-decoration: none;
     font-size: 17px;
     &:hover {
-      color: #c71800;
+      color: black;
     }
   }
 }

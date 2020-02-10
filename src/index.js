@@ -1,26 +1,31 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Route, Link, BrowserRouter as Router } from "react-router-dom";
-import "./index.scss";
-import App from "./App";
-import Heroes from "./Heroes";
-import Home from "./containers/home";
 import * as serviceWorker from "./serviceWorker";
+import "./index.scss";
+
+import Home from "./containers/home";
+import Heroes from "./containers/heroes";
+import SuperheroBattle from "./containers/superheroBattle";
+import TeamBattle from "./containers/teamBattle";
+import About from "./containers/about";
 
 //prettier-ignore
 const routing = (
   <Router>
-    <div className="topnav"> 
-      <ul>
+      <ul className="list">
         <li> <Link to="/">Home</Link> </li>
         <li> <Link to="/heroes">Heroes</Link> </li>
         <li> <Link to="/superherobattle">Superhero battle</Link> </li>
+        <li> <Link to="/teamBattle">Team battle</Link> </li>
+        <li> <Link to="/about">About</Link> </li>
       </ul>
       
-      <Route exact path="/" component={App} />
+      <Route exact path="/" component={Home} />
       <Route path="/heroes" component={Heroes} />
-      <Route path="/superherobattle" component={Home} />
-    </div>
+      <Route path="/superherobattle" component={SuperheroBattle} />
+      <Route path="/teamBattle" component={TeamBattle} />
+      <Route path="/about" component={About} />
   </Router>
 );
 

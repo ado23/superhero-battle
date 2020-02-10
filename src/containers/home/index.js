@@ -1,10 +1,10 @@
 import React, { Component, Fragment } from "react";
-import "./style.css";
-import Card from "../../components/card";
-import characters from "../../api/characters";
-import Navbar from "../../components/navbar";
-import DefaultCard from "../../components/defaultCard";
-import SuperheroBattle from "../../containers/superheroBattle";
+import "./style.scss";
+// import Card from "../../components/card";
+// import characters from "../../api/characters";
+// import Navbar from "../../components/navbar";
+// import DefaultCard from "../../components/defaultCard";
+// import SuperheroBattle from "../../containers/superheroBattle";
 import allCharacters from "../../api/allCharacters";
 import AutocompleteInput from "../../components/autocompleteInput";
 
@@ -38,11 +38,7 @@ class Home extends Component {
         {/* <DefaultCard /> */}
         {/* <SuperheroBattle /> */}
 
-        {/* <div>
-          <AutocompleteInput
-            options={this.state.characters}
-          ></AutocompleteInput>
-        </div> */}
+        <AutocompleteInput options={this.state.characters}></AutocompleteInput>
       </Fragment>
     );
   }
