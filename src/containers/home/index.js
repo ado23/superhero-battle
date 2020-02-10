@@ -1,14 +1,14 @@
 import React, { Component, Fragment } from "react";
-import "./App.css";
-import Card from "./components/card";
-import characters from "./api/characters";
-import Navbar from "./components/navbar";
-import DefaultCard from "./components/defaultCard";
-import SuperheroBattle from "./containers/superheroBattle";
-import allCharacters from "./api/allCharacters";
-import AutocompleteInput from "./components/autocompleteInput";
+import "./style.css";
+import Card from "../../components/card";
+import characters from "../../api/characters";
+import Navbar from "../../components/navbar";
+import DefaultCard from "../../components/defaultCard";
+import SuperheroBattle from "../../containers/superheroBattle";
+import allCharacters from "../../api/allCharacters";
+import AutocompleteInput from "../../components/autocompleteInput";
 
-class App extends Component {
+class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -48,4 +48,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Home;
