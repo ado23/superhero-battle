@@ -28,18 +28,21 @@ class Home extends Component {
   }
   render() {
     return (
-      <Fragment>
-        {/* <Navbar /> */}
-        {/* <div>
+      <div className="probni">
+        <AutocompleteInput options={this.state.characters}></AutocompleteInput>
+      </div>
+      /**  <Fragment>
+         <Navbar />
+         <div>
           {characters.map(character => {
             return <Card key={character.id} characterData={character} />;
           })}
-        </div> */}
-        {/* <DefaultCard /> */}
-        {/* <SuperheroBattle /> */}
+        </div> 
+        <DefaultCard />
+         <SuperheroBattle /> 
 
-        <AutocompleteInput options={this.state.characters}></AutocompleteInput>
-      </Fragment>
+        
+       </Fragment>*/
     );
   }
 }

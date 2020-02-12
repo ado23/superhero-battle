@@ -1,4 +1,12 @@
+$bg-img: url("../../images/background.jpg");
 body {
   /* background-color: #1d1d1f; */
   background-color: darkslategrey;
+}
+
+.probni {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  background-color: blanchedalmond;
 }
