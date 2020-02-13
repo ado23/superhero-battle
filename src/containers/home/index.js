@@ -1,48 +1,48 @@
 import React, { Component, Fragment } from "react";
 import "./style.scss";
-// import Card from "../../components/card";
-// import characters from "../../api/characters";
-// import Navbar from "../../components/navbar";
-// import DefaultCard from "../../components/defaultCard";
-// import SuperheroBattle from "../../containers/superheroBattle";
-import allCharacters from "../../api/allCharacters";
-import AutocompleteInput from "../../components/autocompleteInput";
 
 class Home extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      characters: []
-    };
+    this.state = { value: "" };
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  componentDidMount() {
-    let onlyNames = allCharacters.map(character => {
-      return character.name;
-    });
-
-    this.setState({
-      ...this.state,
-      characters: onlyNames
-    });
+  handleChange(event) {
+    let name = event.target.value;
+    fetch(
+      `https://www.superheroapi.com/api.php/1759899007474589/search/${name}`
+    )
+      .then(res => res.json())
+      .then(result => {
+        console.log("RESULT:", result);
+      });
+    this.setState({ value: event.target.value });
   }
+
+  handleSubmit(event) {
+    alert("A name was submitted: " + this.state.value);
+    event.preventDefault();
+  }
+
   render() {
     return (
-      <div className="probni">
-        <AutocompleteInput options={this.state.characters}></AutocompleteInput>
+      <div className="background">
+        {/* <form onSubmit={this.handleSubmit}>
+          <label style={{ color: "blue", marginRight: "40px" }}>
+            Name
+            <input
+              type="text"
+              value={this.state.value}
+              onChange={this.handleChange}
+              style={{ marginLeft: "10px" }}
+            />
+          </label>
+          <input type="submit" value="Submit" />
+        </form> */}
       </div>
-      /**  <Fragment>
-         <Navbar />
-         <div>
-          {characters.map(character => {
-            return <Card key={character.id} characterData={character} />;
-          })}
-        </div> 
-        <DefaultCard />
-         <SuperheroBattle /> 
-
-        
-       </Fragment>*/
     );
   }
 }

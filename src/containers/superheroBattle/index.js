@@ -1,46 +1,141 @@
 import React, { Component } from "react";
-// import styles from "./styles.scss";
+import "./styles.scss";
+import Card from "../../components/card";
+import characters from "../../api/characters";
+// import Navbar from "../../components/navbar";
+// import DefaultCard from "../../components/defaultCard";
+// import SuperheroBattle from "../../containers/superheroBattle";
+import allCharacters from "../../api/allCharacters";
+import AutocompleteInput from "../../components/autocompleteInput";
 
 class SuperheroBattle extends Component {
   constructor(props) {
     super(props);
-    this.state = { value: "" };
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.state = {
+      characters: [],
+      firstCharacter: {},
+      secondCharacter: {},
+      activeOption: 0,
+      filteredOptions: [],
+      showOptions: false,
+      userInput: ""
+    };
   }
 
-  handleChange(event) {
-    let name = event.target.value;
-    fetch(
-      `https://www.superheroapi.com/api.php/1759899007474589/search/${name}`
-    )
-      .then(res => res.json())
-      .then(result => {
-        console.log("RESULT:", result);
+  componentDidMount() {
+    let onlyNames = allCharacters.map(character => {
+      return character.name;
+    });
+
+    this.setState({
+      ...this.state,
+      characters: onlyNames
+    });
+  }
+
+  onChange = e => {
+    const { characters } = this.state;
+    const userInput = e.currentTarget.value;
+
+    const filteredOptions = characters.filter(
+      optionName =>
+        optionName.toLowerCase().indexOf(userInput.toLowerCase()) > -1
+    );
+
+    this.setState({
+      activeOption: 0,
+      filteredOptions,
+      showOptions: true,
+      userInput: e.currentTarget.value
+    });
+  };
+
+  onClick = e => {
+    let novi = allCharacters.find(character => {
+      return e.currentTarget.innerText === character.name;
+    });
+
+    this.setState({
+      activeOption: 0,
+      filteredOptions: [],
+      showOptions: false,
+      userInput: e.currentTarget.innerText,
+      firstCharacter: novi
+    });
+  };
+
+  onKeyDown = e => {
+    const { activeOption, filteredOptions } = this.state;
+
+    if (e.keyCode === 13) {
+      this.setState({
+        activeOption: 0,
+        showOptions: false,
+        userInput: filteredOptions[activeOption]
       });
-    this.setState({ value: event.target.value });
-  }
-
-  handleSubmit(event) {
-    alert("A name was submitted: " + this.state.value);
-    event.preventDefault();
-  }
+    } else if (e.keyCode === 38) {
+      if (activeOption === 0) {
+        return;
+      }
+      this.setState({ activeOption: activeOption - 1 });
+    } else if (e.keyCode === 40) {
+      if (activeOption === filteredOptions.length - 1) {
+        console.log(activeOption);
+        return;
+      }
+      this.setState({ activeOption: activeOption + 1 });
+    }
+  };
 
   render() {
+    const { filteredOptions, showOptions, userInput } = this.state;
+    const { firstCharacter } = this.state;
+
+    console.log("THIS SATTE: ", this.state);
+
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label style={{ color: "blue", marginRight: "10px" }}>
-          Name
-          <input
-            type="text"
-            value={this.state.value}
-            onChange={this.handleChange}
-            style={{ marginLeft: "10px" }}
+      <div className="battle">
+        <div className="firstCharacter">
+          {Object.entries(firstCharacter).length > 0 ? (
+            <Card characterData={firstCharacter} />
+          ) : null}
+
+          <AutocompleteInput
+            userInput={userInput}
+            showOptions={showOptions}
+            filteredOptions={filteredOptions}
+            onClick={this.onClick.bind(this)}
+            onChange={this.onChange.bind(this)}
+            onKeyDown={this.onKeyDown.bind(this)}
           />
-        </label>
-        <input type="submit" value="Submit" />
-      </form>
+        </div>
+        <div className="secondCharacter">
+          {Object.entries(firstCharacter).length > 0 ? (
+            <Card characterData={firstCharacter} />
+          ) : null}
+
+          <AutocompleteInput
+            userInput={userInput}
+            showOptions={showOptions}
+            filteredOptions={filteredOptions}
+            onClick={this.onClick.bind(this)}
+            onChange={this.onChange.bind(this)}
+            onKeyDown={this.onKeyDown.bind(this)}
+          />
+        </div>
+      </div>
+      /**  <Fragment>
+         <Navbar />
+         <div>
+          {characters.map(character => {
+            return <Card key={character.id} characterData={character} />;
+          })}
+        </div> 
+        <DefaultCard />
+         <SuperheroBattle /> 
+
+        
+       </Fragment>*/
     );
   }
 }

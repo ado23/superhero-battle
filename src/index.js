@@ -13,14 +13,14 @@ import About from "./containers/about";
 //prettier-ignore
 const routing = (
   <Router>
-      <ul className="list">
+      <ul className="klasa">
         <li> <Link to="/">Home</Link> </li>
         <li> <Link to="/heroes">Heroes</Link> </li>
         <li> <Link to="/superherobattle">Superhero battle</Link> </li>
         <li> <Link to="/teamBattle">Team battle</Link> </li>
         <li> <Link to="/about">About</Link> </li>
       </ul>
-      
+
       <Route exact path="/" component={Home} />
       <Route path="/heroes" component={Heroes} />
       <Route path="/superherobattle" component={SuperheroBattle} />

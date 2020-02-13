@@ -1,12 +1,10 @@
-$bg-img: url("../../images/background.jpg");
-body {
-  /* background-color: #1d1d1f; */
-  background-color: darkslategrey;
-}
+$bg-img: url("../../images/background2.png");
 
-.probni {
-  display: flex;
-  justify-content: flex-start;
-  flex-direction: column;
-  background-color: blanchedalmond;
+.background {
+  height: 80%;
+  width: 80%;
+  background-repeat: no-repeat;
+  left: 20%;
+  top: 10%;
+  position: absolute;
 }

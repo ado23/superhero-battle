@@ -1,8 +1,11 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import styles from "./style.module.scss";
 
 class Card extends Component {
   render() {
+    console.log("PROPS OVDJE_ ", this.props);
+
     let data = this.props.characterData;
 
     let { name, powerstats } = data;
@@ -54,5 +57,9 @@ class Card extends Component {
     );
   }
 }
+
+Card.defaultProps = {
+  characterData: {}
+};
 
 export default Card;
