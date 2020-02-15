@@ -4,12 +4,14 @@ import "./styles.scss";
 
 class AutocompleteInput extends Component {
   render() {
-    const { filteredOptions, showOptions, userInput } = this.props;
+    const { filteredOptions, showOptions } = this.props;
     const { onChange, onClick, onKeyDown } = this.props;
+
+    const { name, type, className, value, placeholder } = this.props;
 
     let suggestionsListComponent;
 
-    if (showOptions && userInput) {
+    if (showOptions && value) {
       if (filteredOptions.length < 15) {
         suggestionsListComponent = (
           <ul className="options">
@@ -34,13 +36,13 @@ class AutocompleteInput extends Component {
     return (
       <Fragment>
         <input
-          name="samoForma"
-          type="text"
+          name={name}
+          type={type}
+          value={value}
           className="search-box"
           onChange={onChange}
           onKeyDown={onKeyDown}
-          value={userInput}
-          placeholder="Search for hero..."
+          placeholder={placeholder}
         />
         {suggestionsListComponent}
       </Fragment>

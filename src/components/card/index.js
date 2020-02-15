@@ -4,8 +4,6 @@ import styles from "./style.module.scss";
 
 class Card extends Component {
   render() {
-    console.log("PROPS OVDJE_ ", this.props);
-
     let data = this.props.characterData;
 
     let { name, powerstats } = data;
@@ -59,7 +57,28 @@ class Card extends Component {
 }
 
 Card.defaultProps = {
-  characterData: {}
+  characterData: {
+    name: "Unknown",
+    powerstats: {
+      intelligence: 0,
+      strength: 0,
+      speed: 0,
+      durability: 0,
+      power: 0,
+      combat: 0
+    },
+    appearance: {
+      height: ["1", "1 cm"],
+      weight: ["1", "1 kg"]
+    },
+    images: {
+      lg:
+        "https://image.shutterstock.com/image-vector/male-face-silhouette-icon-man-260nw-1165858396.jpg"
+    },
+    biography: {
+      publisher: "unknown"
+    }
+  }
 };
 
 export default Card;
