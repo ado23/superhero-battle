@@ -1,34 +1,11 @@
 import React, { Component } from "react";
 import "./styles.scss";
 import AutocompleteInput from "../../components/autocompleteInput";
-import Card from "../../components/card";
 
 class HeroSelection extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      heroData: {
-        name: "Unknown",
-        powerstats: {
-          intelligence: 0,
-          strength: 0,
-          speed: 0,
-          durability: 0,
-          power: 0,
-          combat: 0
-        },
-        appearance: {
-          height: ["1", "1 cm"],
-          weight: ["1", "1 kg"]
-        },
-        images: {
-          lg:
-            "https://image.shutterstock.com/image-vector/male-face-silhouette-icon-man-260nw-1165858396.jpg"
-        },
-        biography: {
-          publisher: "unknown"
-        }
-      },
       activeOption: 0,
       filteredOptions: [],
       showOptions: false,
@@ -67,24 +44,24 @@ class HeroSelection extends Component {
 
   onClick = e => {
     let { allCharacters } = this.props;
+    let { name, setHeroData } = this.props;
 
     let heroData = allCharacters.find(character => {
       return e.currentTarget.innerText === character.name;
     });
 
-    this.props.setHeroData(heroData, this.props.name);
+    setHeroData(heroData, name);
 
     this.setState({
       activeOption: 0,
       filteredOptions: [],
       showOptions: false,
-      userInput: e.currentTarget.innerText,
-      heroData
+      userInput: e.currentTarget.innerText
     });
   };
 
   onKeyDown = e => {
-    let { allCharacters } = this.props;
+    let { allCharacters, name, setHeroData } = this.props;
 
     const { activeOption, filteredOptions } = this.state;
 
@@ -97,9 +74,9 @@ class HeroSelection extends Component {
         activeOption: 0,
         showOptions: false,
         filteredOptions: [],
-        userInput: filteredOptions[activeOption],
-        heroData
+        userInput: filteredOptions[activeOption]
       });
+      setHeroData(heroData, name);
     } else if (e.keyCode === 38) {
       if (activeOption === 0) {
         return;
@@ -115,18 +92,12 @@ class HeroSelection extends Component {
   };
 
   render() {
-    const { heroData, userInput, showOptions, filteredOptions } = this.state;
+    const { userInput, showOptions, filteredOptions } = this.state;
     let { name, placeholder } = this.props;
-
-    let { setHeroData } = this.props;
 
     return (
       <div className="battle">
         <div className="firstCharacter">
-          {/* {Object.entries(heroData).length > 0 ? ( */}
-          <Card characterData={heroData} />
-          {/* ) : null} */}
-
           <AutocompleteInput
             name={name}
             type="text"

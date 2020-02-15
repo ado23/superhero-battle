@@ -8,11 +8,7 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  align-items: center;
-}
-
-.button {
-  align-self: center;
+  align-items: baseline;
 }
 
 .myButton {

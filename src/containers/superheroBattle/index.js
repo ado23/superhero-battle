@@ -3,14 +3,84 @@ import "./styles.scss";
 
 import allCharacters from "../../api/allCharacters";
 import HeroSelection from "../heroSelection";
+import Card from "../../components/card";
 
 class SuperheroBattle extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      firstHero: {},
-      secondHero: {}
+      firstHero: {
+        name: "Unknown",
+        powerstats: {
+          intelligence: 0,
+          strength: 0,
+          speed: 0,
+          durability: 0,
+          power: 0,
+          combat: 0
+        },
+        appearance: {
+          height: ["0", "0 cm"],
+          weight: ["0", "0 kg"]
+        },
+        images: {
+          lg:
+            "https://image.shutterstock.com/image-vector/male-face-silhouette-icon-man-260nw-1165858396.jpg"
+        },
+        biography: {
+          publisher: "unknown"
+        }
+      },
+      secondHero: {
+        name: "Unknown",
+        powerstats: {
+          intelligence: 0,
+          strength: 0,
+          speed: 0,
+          durability: 0,
+          power: 0,
+          combat: 0
+        },
+        appearance: {
+          height: ["0", "0 cm"],
+          weight: ["0", "0 kg"]
+        },
+        images: {
+          lg:
+            "https://image.shutterstock.com/image-vector/male-face-silhouette-icon-man-260nw-1165858396.jpg"
+        },
+        biography: {
+          publisher: "unknown"
+        }
+      }
     };
+  }
+
+  findWinnner() {
+    let firstHeroPowerstats = Object.values(this.state.firstHero.powerstats);
+    let secondHeroPowerstats = Object.values(this.state.secondHero.powerstats);
+
+    let firstHeroPoints = 0;
+    let secondHeroPoints = 0;
+    let winner = "";
+
+    firstHeroPowerstats.forEach((element, index) => {
+      if (element > secondHeroPowerstats[index]) {
+        firstHeroPoints++;
+      } else if (element < secondHeroPowerstats[index]) {
+        secondHeroPoints++;
+      }
+    });
+
+    if (firstHeroPoints > secondHeroPoints) {
+      winner = this.state.firstHero.name;
+    } else if (firstHeroPoints < secondHeroPoints) {
+      winner = this.state.secondHero.name;
+    } else {
+      winner = "Draw";
+    }
+
+    alert(winner);
   }
 
   setHeroData(heroData, name) {
@@ -20,19 +90,23 @@ class SuperheroBattle extends Component {
   }
 
   render() {
-    console.log("STATE U SELECTION: ", this.state);
+    const { firstHero, secondHero } = this.state;
 
     return (
       <div className="battle">
         <HeroSelection
-          name="FirstHero"
+          name="firstHero"
           placeholder="Search for hero..."
           allCharacters={allCharacters}
           setHeroData={this.setHeroData.bind(this)}
         />
-        <button className="myButton">Battle</button>
+        <Card characterData={firstHero} />
+        <button className="myButton" onClick={this.findWinnner.bind(this)}>
+          Battle
+        </button>
+        <Card characterData={secondHero} />
         <HeroSelection
-          name="SecondHero"
+          name="secondHero"
           placeholder="Search for hero..."
           allCharacters={allCharacters}
           setHeroData={this.setHeroData.bind(this)}
