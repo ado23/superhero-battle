@@ -34,7 +34,7 @@ class AutocompleteInput extends Component {
     }
 
     return (
-      <Fragment>
+      <div>
         <input
           name={name}
           type={type}
@@ -43,9 +43,10 @@ class AutocompleteInput extends Component {
           onChange={onChange}
           onKeyDown={onKeyDown}
           placeholder={placeholder}
+          autocomplete="off"
         />
         {suggestionsListComponent}
-      </Fragment>
+      </div>
     );
   }
 }

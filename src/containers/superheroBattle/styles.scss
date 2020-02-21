@@ -1,7 +1,7 @@
 $bg-img: url("../../images/background.jpg");
 body {
   /* background-color: #1d1d1f; */
-  background-color: darkslategrey;
+  background-color: #282828;
 }
 
 .battle {
@@ -12,23 +12,23 @@ body {
 }
 
 .myButton {
-  box-shadow: 0px 1px 50px 17px #f9eca0;
-  background: linear-gradient(to bottom, #ebcd46 5%, #f2ab1e 100%);
-  background-color: #ebcd46;
-  border-radius: 12px;
-  border: 1px solid #eb6246;
-  display: inline-block;
-  cursor: pointer;
-  color: #000000;
-  font-family: Arial;
-  font-size: 21px;
-  font-weight: bold;
-  padding: 19px 33px;
+  color: #fff;
+  text-transform: uppercase;
   text-decoration: none;
+  background: #26971a;
+  padding: 20px 30px;
+  border-radius: 20px;
+  font-size: 18px;
+  border: none;
+  transition: all 0.4s ease 0s;
+  outline: none;
 }
 .myButton:hover {
-  background: linear-gradient(to bottom, #f2ab1e 5%, #ebcd46 100%);
-  background-color: #f2ab1e;
+  text-shadow: 0px 0px 6px rgba(255, 255, 255, 1);
+  background-color: rgb(101, 165, 40);
+  -webkit-box-shadow: 0px 5px 40px -10px rgb(123, 202, 50);
+  -moz-box-shadow: 0px 5px 40px -10px rgb(123, 202, 50);
+  transition: all 0.4s ease 0s;
 }
 .myButton:active {
   position: relative;

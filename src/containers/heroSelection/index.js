@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./styles.scss";
+
 import AutocompleteInput from "../../components/autocompleteInput";
 
 class HeroSelection extends Component {
@@ -96,21 +96,17 @@ class HeroSelection extends Component {
     let { name, placeholder } = this.props;
 
     return (
-      <div className="battle">
-        <div className="firstCharacter">
-          <AutocompleteInput
-            name={name}
-            type="text"
-            value={userInput}
-            showOptions={showOptions}
-            placeholder={placeholder}
-            filteredOptions={filteredOptions}
-            onClick={this.onClick.bind(this)}
-            onChange={this.onChange.bind(this)}
-            onKeyDown={this.onKeyDown.bind(this)}
-          />
-        </div>
-      </div>
+      <AutocompleteInput
+        name={name}
+        type="text"
+        value={userInput}
+        showOptions={showOptions}
+        placeholder={placeholder}
+        filteredOptions={filteredOptions}
+        onClick={this.onClick.bind(this)}
+        onChange={this.onChange.bind(this)}
+        onKeyDown={this.onKeyDown.bind(this)}
+      />
     );
   }
 }
