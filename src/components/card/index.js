@@ -19,7 +19,7 @@ class Card extends Component {
         }
       >
         <div>
-          <img src={srcImg} alt={name} />
+          <img className={styles.hero_image} src={srcImg} alt={name} />
         </div>
 
         <figcaption className={styles.card_caption}>
@@ -72,8 +72,7 @@ Card.defaultProps = {
       weight: ["1", "1 kg"]
     },
     images: {
-      lg:
-        "https://image.shutterstock.com/image-vector/male-face-silhouette-icon-man-260nw-1165858396.jpg"
+      lg: "https://community.algolia.com/marvel-search/img/hit-default.jpg"
     },
     biography: {
       publisher: "unknown"

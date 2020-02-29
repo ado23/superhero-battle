@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans|Open+Sans+Condensed:300,700");
 
-$card-font: "Open Sans Condensed", "Open Sans", helvetica, sans-serif;
+$card-font: "Open Sans Condensed";
+$card_apperance-font: "Open Sans";
 
 @mixin transition($property) {
   -webkit-transition: $property;
@@ -12,23 +13,12 @@ $card-font: "Open Sans Condensed", "Open Sans", helvetica, sans-serif;
   transform: translateY($property);
 }
 
-body {
-  font-family: "Open Sans", Helvetica, sans-serif;
-  margin: 0;
-}
-
-img {
+.hero_image {
   height: 330px;
   width: 300px;
   margin-bottom: -6px;
   display: inline-block;
   border-radius: 10px 10px 0 0;
-}
-
-// prettier-ignore
-h1, h2, h3, h4, h5 {
-  margin: 0;
-  font-weight: 400;
 }
 
 %card {
@@ -68,6 +58,8 @@ h1, h2, h3, h4, h5 {
   line-height: 1;
   border-radius: 2px;
   background: #bbbbbb;
+  margin: 0;
+  font-weight: 400;
 }
 
 .card_label {
@@ -76,14 +68,16 @@ h1, h2, h3, h4, h5 {
   font-weight: 400;
   display: block;
   margin-bottom: 3px;
+  font-family: $card_apperance-font;
 }
 
 .card_name {
   font-family: $card-font;
   text-align: center;
   font-size: 1.5em;
-  font-weight: 700;
+  font-weight: 550;
   letter-spacing: 0.02em;
+  margin: 0;
 }
 
 .card_stats {
@@ -105,11 +99,13 @@ h1, h2, h3, h4, h5 {
 .card_abilities {
   display: flex;
   justify-content: space-between;
+  font-family: $card_apperance-font;
 }
 
 .card_ability {
-  margin-top: 1em;
-  flex: 1 0;
+  margin-top: 0.2em;
+  margin: 0;
+  font-weight: 400;
 }
 
 .dc_comics {

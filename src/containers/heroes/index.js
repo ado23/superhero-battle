@@ -1,8 +1,10 @@
 import React, { Component } from "react";
+import HeroCard from "../../components/heroCard";
+import heroes from "../../api/characters";
 
 class Heroes extends Component {
   render() {
-    return <h1>About</h1>;
+    return <HeroCard heroData={heroes} />;
   }
 }
 
