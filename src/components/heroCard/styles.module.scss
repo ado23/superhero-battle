@@ -1,0 +1,119 @@
+.article {
+  flex: 1 1 45%;
+  display: flex;
+  margin: 3px;
+  border: 1px solid black;
+  cursor: pointer;
+  align-items: stretch;
+}
+
+.thumbnail {
+  display: flex;
+  // background-image: url(https://community.algolia.com/marvel-search/img/hit-default.jpg);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1;
+  background-image: url(https://community.algolia.com/marvel-search/img/profile-bg-default.gif);
+  padding: 0.5rem 1rem;
+  background-position: center;
+  background-size: cover;
+}
+
+.title {
+  margin: 0;
+  font-family: "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  color: #ffffff;
+  font-size: 1.7rem;
+  text-shadow: 1px 1px 1px gray;
+}
+
+.description {
+  color: grey;
+  font-size: 0.9rem;
+  line-height: 0.7rem;
+  font-family: "Title";
+}
+
+.box {
+  position: relative;
+}
+
+%aligment {
+  position: absolute;
+  right: -3px;
+  top: -3px;
+  z-index: 1;
+  overflow: hidden;
+  width: 75px;
+  height: 75px;
+  span {
+    font-size: 10px;
+    font-weight: bold;
+    color: #fff;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 20px;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    width: 100px;
+    box-shadow: 0 3px 10px -5px rgba(0, 0, 0, 1);
+    position: absolute;
+    top: 19px;
+    right: -21px;
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0px;
+      top: 100%;
+      z-index: -1;
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      right: 0px;
+      top: 100%;
+      z-index: -1;
+    }
+  }
+}
+
+.aligmentGood {
+  @extend %aligment;
+  span {
+    background: linear-gradient(#2989d8 0%, #1e5799 100%);
+    &::before {
+      border-left: 3px solid #1e5799;
+      border-right: 3px solid transparent;
+      border-bottom: 3px solid transparent;
+      border-top: 3px solid #1e5799;
+    }
+    &::after {
+      border-left: 3px solid transparent;
+      border-right: 3px solid #1e5799;
+      border-bottom: 3px solid transparent;
+      border-top: 3px solid #1e5799;
+    }
+  }
+}
+
+.aligmentBad {
+  @extend %aligment;
+  span {
+    background: linear-gradient(#f70505 0%, #8f0808 100%);
+    &::before {
+      border-left: 3px solid #8f0808;
+      border-right: 3px solid transparent;
+      border-bottom: 3px solid transparent;
+      border-top: 3px solid #8f0808;
+    }
+    &::after {
+      border-left: 3px solid transparent;
+      border-right: 3px solid #8f0808;
+      border-bottom: 3px solid transparent;
+      border-top: 3px solid #8f0808;
+    }
+  }
+}

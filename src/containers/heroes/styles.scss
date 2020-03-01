@@ -1,0 +1,28 @@
+@import url("https://fonts.googleapis.com/css?family=Oxanium&display=swap");
+
+.mainContainer {
+  margin: auto;
+  margin-top: 20px;
+  display: flex;
+  background-color: darkgreen;
+  width: 90%;
+}
+
+.heroList {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.filterContainer {
+  display: flex;
+  justify-content: center;
+  background-color: lightblue;
+}
+
+.titleFilter {
+  font-size: 1.8rem;
+  margin: 0 0 8px;
+  color: #f11e22;
+  font-family: "Oxanium";
+}

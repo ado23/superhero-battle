@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import "./styles.scss";
+import styles from "./styles.module.scss";
 
 class HeroCard extends Component {
   render() {
     let { heroData } = this.props;
 
-    let srcImg = heroData[0].images.sm;
-    let { name } = heroData[0];
+    let srcImg = heroData.images.sm;
+    let { name } = heroData;
     let {
       fullName,
       placeOfBirth,
@@ -14,97 +14,48 @@ class HeroCard extends Component {
       publisher,
       alignment,
       firstAppearance
-    } = heroData[0].biography;
+    } = heroData.biography;
 
-    let work = heroData[0].work.occupation;
-    let connections = heroData[0].connections.groupAffiliation;
+    let work = heroData.work.occupation;
+    let connections = heroData.connections.groupAffiliation;
 
     return (
-      <div className="container">
-        <article className="article">
-          <div className="thumbnail">
-            <img className="thumbnail_image" src={srcImg} alt="sss" />
-          </div>
+      <article className={styles.article}>
+        <div className={styles.thumbnail}>
+          <img src={srcImg} alt="sss" />
+        </div>
 
-          <div className="content">
-            <h3 className="title">{name}</h3>
-            <div className="description">
-              <p>Full name: {fullName}</p>
-              <p> Place of birth: {placeOfBirth}</p>
-              <p>Aliases: {aliases}</p>
-              <p> Publisher: {publisher}</p>
-              <p> Aligment: {alignment} </p>
-              <p>First appearance: {firstAppearance} </p>
-              <p> Occupation: {work} </p>
-              <p>Connctions: {connections}</p>
-            </div>
+        <div className={styles.content}>
+          <h3 className={styles.title}>{name}</h3>
+          <div className={styles.description}>
+            <p>Full name: {fullName}</p>
+            <p> Place of birth: {placeOfBirth}</p>
+            <p>Aliases: {aliases}</p>
+            <p> Publisher: {publisher}</p>
+            <p>First appearance: {firstAppearance} </p>
+            <p> Occupation: {work} </p>
+            <p>Connctions: {connections}</p>
           </div>
-        </article>
-        <article className="article">
-          <div className="thumbnail">
-            <img className="thumbnail_image" src={srcImg} alt="sss" />
+        </div>
+        <div className={styles.box}>
+          <div
+            className={
+              alignment === "good" ? styles.aligmentGood : styles.aligmentBad
+            }
+          >
+            <span>{alignment}</span>
           </div>
-
-          <div className="content">
-            <h3 className="title">{name}</h3>
-            <div className="description">
-              <p>Full name: {fullName}</p>
-              <p> Place of birth: {placeOfBirth}</p>
-              <p>Aliases: {aliases}</p>
-              <p> Publisher: {publisher}</p>
-              <p> Aligment: {alignment} </p>
-              <p>First appearance: {firstAppearance} </p>
-              <p> Occupation: {work} </p>
-              <p>Connctions: {connections}</p>
-            </div>
-          </div>
-        </article>
-        <article className="article">
-          <div className="thumbnail">
-            <img className="thumbnail_image" src={srcImg} alt="sss" />
-          </div>
-
-          <div className="content">
-            <h3 className="title">{name}</h3>
-            <div className="description">
-              <p>Full name: {fullName}</p>
-              <p> Place of birth: {placeOfBirth}</p>
-              <p>Aliases: {aliases}</p>
-              <p>First appearance: {firstAppearance} </p>
-              <p> Publisher: {publisher}</p>
-              <p> Aligment: {alignment} </p>
-              <p> Occupation: {work} </p>
-              <p>Connctions: {connections}</p>
-            </div>
-          </div>
-        </article>
-        <article className="article">
-          <div className="thumbnail">
-            <img className="thumbnail_image" src={srcImg} alt="sss" />
-          </div>
-
-          <div className="content">
-            <h3 className="title">{name}</h3>
-            <div className="description">
-              <p>Full name: {fullName}</p>
-              <p> Place of birth: {placeOfBirth}</p>
-              <p>Aliases: {aliases}</p>
-              <p>First appearance: {firstAppearance} </p>
-              <p> Publisher: {publisher}</p>
-              <p> Aligment: {alignment} </p>
-              <p> Occupation: {work} </p>
-              <p>Connctions: {connections}</p>
-            </div>
-          </div>
-        </article>
-      </div>
+        </div>
+      </article>
     );
   }
 }
 
 HeroCard.defaultProps = {
   heroData: {
+    id: 26,
     name: "Unknown",
+    slug: "Unknown",
     powerstats: {
       intelligence: 0,
       strength: 0,
@@ -114,14 +65,32 @@ HeroCard.defaultProps = {
       combat: 0
     },
     appearance: {
+      gender: "Female",
+      race: null,
       height: ["1", "1 cm"],
-      weight: ["1", "1 kg"]
+      weight: ["1", "1 kg"],
+      eyeColor: "Brown",
+      hairColor: "Black"
+    },
+    biography: {
+      fullName: "Unknown",
+      alterEgos: "Unknown",
+      aliases: ["Unknown"],
+      placeOfBirth: "-",
+      firstAppearance: "Unknown",
+      publisher: "Unknown",
+      alignment: "Unknown"
+    },
+    work: {
+      occupation: "-",
+      base: "-"
+    },
+    connections: {
+      groupAffiliation: "Unknown",
+      relatives: "Unknown"
     },
     images: {
       md: "https://community.algolia.com/marvel-search/img/hit-default.jpg"
-    },
-    biography: {
-      publisher: "unknown"
     }
   }
 };
