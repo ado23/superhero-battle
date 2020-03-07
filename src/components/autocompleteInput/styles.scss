@@ -53,6 +53,7 @@
   flex-direction: column;
   width: 95%;
   li {
+    font-family: "Open Sans";
     border-top: solid 0.4px grey;
     background: black;
     color: whitesmoke;
@@ -86,6 +87,7 @@
 // }
 
 .no-options {
+  font-family: "Open Sans";
   background-color: rgb(100, 167, 100);
   font-weight: bold;
   color: yellowgreen;

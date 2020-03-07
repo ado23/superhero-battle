@@ -4,8 +4,8 @@
   margin: auto;
   margin-top: 20px;
   display: flex;
-  background-color: darkgreen;
   width: 90%;
+  flex-direction: column;
 }
 
 .heroList {
@@ -16,8 +16,11 @@
 
 .filterContainer {
   display: flex;
-  justify-content: center;
-  background-color: lightblue;
+  flex-direction: column;
+
+  align-self: center;
+
+  text-align: center;
 }
 
 .titleFilter {
