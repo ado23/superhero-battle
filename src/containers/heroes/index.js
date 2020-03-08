@@ -1,20 +1,19 @@
 import React, { Component, Fragment } from "react";
 import HeroCard from "../../components/heroCard";
-import allHeroes from "../../api/charactersMarvel";
-
 import Pagination from "../../components/pagination";
-import { getPageNumbersForward, getPageNumberBack } from "./utils";
-
 import "./styles.scss";
+
+import { getPageNumbersForward, getPageNumberBack } from "./utils";
+import heroes from "../../api/allCharacters.json";
 
 class Heroes extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      heroes: allHeroes,
+      heroes,
       pageNumbers: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
       currentPage: 1,
-      heroesPerPage: 10
+      heroesPerPage: 20
     };
   }
 
