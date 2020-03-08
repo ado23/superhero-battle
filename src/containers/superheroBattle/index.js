@@ -24,8 +24,7 @@ class SuperheroBattle extends Component {
           weight: ["0", "0 kg"]
         },
         images: {
-          lg:
-            "https://image.shutterstock.com/image-vector/male-face-silhouette-icon-man-260nw-1165858396.jpg"
+          lg: "https://community.algolia.com/marvel-search/img/hit-default.jpg"
         },
         biography: {
           publisher: "unknown"
@@ -46,8 +45,7 @@ class SuperheroBattle extends Component {
           weight: ["0", "0 kg"]
         },
         images: {
-          lg:
-            "https://image.shutterstock.com/image-vector/male-face-silhouette-icon-man-260nw-1165858396.jpg"
+          lg: "https://community.algolia.com/marvel-search/img/hit-default.jpg"
         },
         biography: {
           publisher: "unknown"

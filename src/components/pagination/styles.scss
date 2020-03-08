@@ -1,6 +1,7 @@
 .container {
   display: flex;
   justify-content: center;
+  margin-top: 10px;
 }
 
 .list {
@@ -8,7 +9,7 @@
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #333333;
+  background-color: #302121;
 }
 
 .listElement {
