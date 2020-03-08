@@ -23,63 +23,58 @@ class Heroes extends Component {
     });
   }
 
-  setPageNumbersForward() {
-    const { pageNumbers } = this.state;
+  setPageNumbersForward(amountForward) {
+    const { pageNumbers, heroesPerPage } = this.state;
+    const heroesLength = this.state.heroes.length;
+
     let pageNumbersForward = [];
+    let pageNumberLength = pageNumbers.length - 1;
+    let lastPagNumber = Math.ceil(heroesLength / heroesPerPage);
+    let currentLastPagNumber = pageNumbers[pageNumberLength];
+    let currentLastDiff = lastPagNumber - currentLastPagNumber;
 
-    let last = Math.ceil(this.state.heroes.length / this.state.heroesPerPage);
-    let lastNumber = pageNumbers[9];
-
-    pageNumbersForward = pageNumbers.map(number => {
-      return number + 5;
-    });
-
-    if (last - lastNumber < 5) {
+    if (currentLastDiff < amountForward) {
       pageNumbersForward = [...pageNumbers];
 
-      let razlika = last - lastNumber;
-
-      for (let i = lastNumber + 1; i <= last; i++) {
+      for (let i = currentLastPagNumber + 1; i <= lastPagNumber; i++) {
         pageNumbersForward.push(i);
       }
 
-      pageNumbersForward = pageNumbersForward.slice(razlika);
+      pageNumbersForward = pageNumbersForward.slice(currentLastDiff);
+    } else {
+      pageNumbersForward = pageNumbers.map(number => {
+        return number + amountForward;
+      });
     }
-    console.log("PAGE NUMBERS FORWARD: ", pageNumbersForward);
 
     this.setState({
       pageNumbers: pageNumbersForward
     });
   }
 
-  setPageNumbersBack() {
+  setPageNumbersBack(amountBack) {
     const { pageNumbers } = this.state;
-    let pageNumbersBack = pageNumbers.map(number => {
-      return number - 5;
-    });
 
-    console.log("PAGE NUMBERS BACK: ", pageNumbersBack);
+    let pageNumbersBack = [];
+    let firstPagNumber = 1;
+    let currentFirstPagNumber = pageNumbers[0];
+    let currentLastDiff = currentFirstPagNumber - firstPagNumber;
 
-    let first = 1;
-    let firstNumber = pageNumbers[0];
-
-    if (firstNumber - first < 5) {
+    if (currentLastDiff < amountBack) {
       pageNumbersBack = [...pageNumbers];
 
-      let razlika = firstNumber - first;
-      console.log("PAGE SDASDAS: ", pageNumbersBack[0]);
-      let zadnji = pageNumbersBack[0];
+      let lastPreviousNumber = pageNumbersBack[0];
 
-      for (let i = zadnji - 1; i > 0; i--) {
+      for (let i = lastPreviousNumber - 1; i > 0; i--) {
         pageNumbersBack.unshift(i);
       }
 
-      pageNumbersBack = pageNumbersBack.slice(0, -razlika);
-
-      console.log("OVDJE PAGE NUMBES : ", pageNumbersBack);
+      pageNumbersBack = pageNumbersBack.slice(0, -currentLastDiff);
+    } else {
+      pageNumbersBack = pageNumbers.map(number => {
+        return number - amountBack;
+      });
     }
-
-    console.log("PAGE NUMBERS BACK NA KRAJU: ", pageNumbersBack);
 
     this.setState({
       pageNumbers: pageNumbersBack

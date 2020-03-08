@@ -11,15 +11,17 @@ const Pagination = ({
   setPageNumbersBack
 }) => {
   let limitForward = Math.ceil(allHeroes / heroesPerPage);
+  let lastElement = pageNumbers.length;
+
   let currentBack = pageNumbers[0];
-  let currentForward = pageNumbers[9];
+  let currentForward = pageNumbers[lastElement - 1];
 
   return (
     <div className="container">
       <ul className="list">
         <li key="back" className="listElement">
           <a
-            onClick={currentBack > 1 ? () => setPageNumbersBack() : null}
+            onClick={currentBack > 1 ? () => setPageNumbersBack(5) : null}
             href="#!"
             className="listNumber"
           >
@@ -41,7 +43,7 @@ const Pagination = ({
           <a
             onClick={
               currentForward < limitForward
-                ? () => setPageNumbersForward()
+                ? () => setPageNumbersForward(5)
                 : null
             }
             href="#!"
